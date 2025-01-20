@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import loginImage from '../assets/login-1.png'
 import './Login.css'
@@ -34,15 +35,23 @@ const Login = () => {
         body: JSON.stringify(data)
       });
       if (response.ok) {
-        alert("Login Successfully");
+        Swal.fire({
+          title: "Login Successfully",
+          icon: "success",
+          draggable: true
+        });
         setData({
-          email:"",
-          password:""
+          email: "",
+          password: ""
         });
         navigate('/home');
 
       } else {
-        alert("Invalid email or password");
+        Swal.fire({
+          title: "Invalid Email or password",
+          icon: "success",
+          draggable: true
+        });
       }
     } catch (error) {
       console.log("in login", error)

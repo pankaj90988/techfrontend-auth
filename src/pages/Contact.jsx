@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Swal from 'sweetalert2'
 import './Contact.css'
 import contactImage from '../assets/registration-3.png'
 
@@ -16,7 +17,7 @@ const Contact = () => {
 
     setContact({
       ...contact,
-      [name]:value,
+      [name]: value,
     });
 
     // setContact((previousData) => ({
@@ -27,35 +28,43 @@ const Contact = () => {
 
   const formHandler = async (e) => {
     e.preventDefault();
-      try {
-        const response = await fetch('https://techbackend-h4vp.onrender.com/api/form/contact',{
-          method:"POST",
-          headers:{
-            'Content-Type':"application/json"
-          },
-          body:JSON.stringify(contact),
-        });
+    try {
+      const response = await fetch('https://techbackend-h4vp.onrender.com/api/form/contact', {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(contact),
+      });
 
-        if(response.ok){
-            setContact({
-              username: "",
-              email: "",
-              message: "",
-            });
-
-            const data = await response.json();
-            alert("message send successfully");
-
-        }
-      } catch (error) {
-        alert("message not send successfully");
+      if (response.ok) {
         setContact({
           username: "",
           email: "",
           message: "",
         });
-        console.log(error)
+
+        const data = await response.json();
+        Swal.fire({
+          title: "Message sent successfully",
+          icon: "success",
+          draggable: true
+        });
+
       }
+    } catch (error) {
+      Swal.fire({
+        title: "Message not sent successfully",
+        icon: "success",
+        draggable: true
+      });
+      setContact({
+        username: "",
+        email: "",
+        message: "",
+      });
+      console.log(error)
+    }
   };
 
   return (

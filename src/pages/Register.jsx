@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Swal from 'sweetalert2'
 import {Link, useNavigate} from 'react-router-dom'
 import './Register.css'
 import RegiImage from '../assets/registration-3.png'
@@ -34,7 +35,11 @@ const Register = () => {
       });
 
       if (response.ok) {
-        alert("Registration succesfull");
+        Swal.fire({
+          title: "Registration succesfull\nThank you",
+          icon: "success",
+          draggable: true
+        });
         // const res_data = await response.json();
         //storing data in localstorage
         // sotreTokenInLocalStorage(res_data.token);
@@ -48,7 +53,12 @@ const Register = () => {
         });
         navigate("/login");
       }else{
-        alert("something went wrong try again");
+        Swal.fire({
+          title: "Something went wrong try again",
+          icon: "success",
+          draggable: true
+        });
+        
       }
     } catch (error) {
       console.log("In Register:", error);

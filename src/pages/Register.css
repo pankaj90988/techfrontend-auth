@@ -55,6 +55,9 @@
     background: transparent;
     padding: 0.3rem 0.5rem;
 }
+.registration-form form input:focus{
+   border: 1.5px solid white;
+}
 .registration-form .submit-btn{
     padding: 0.4rem 0.9rem;
     font-size: 1.2rem;
