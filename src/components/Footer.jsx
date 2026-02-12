@@ -10,6 +10,8 @@ import './Footer.css'
 import Logo from '../assets/panku.jpeg'
 
 const Footer = () => {
+  const current_year = new Date().getFullYear();
+
   return (
     <>
       <footer>
@@ -24,8 +26,8 @@ const Footer = () => {
           <div className="col">
             <h3>Office <div className="underline"><span></span></div></h3>
             <p>Amaniganj Road</p>
-            <p>Ayodhya, Utter Pradesh</p>
-            <p>Sant Nager, Ayodhya Utter Pradesh</p>
+            <p>Ayodhya, Uttar Pradesh</p>
+            <p>Sant Nagar, Ayodhya Uttar Pradesh</p>
             <p className='email-id'>pankajjnv@005@gmail.com</p>
             <h4>+91 8953224298</h4>
           </div>
@@ -64,7 +66,7 @@ const Footer = () => {
           </div>
         </div>
         <hr />
-        <p className='copy-right'>Panku Technical Community &copy; 2024 - All Rights Reserved</p>
+        <p className='copy-right'>Panku IT Services Community &copy; {current_year} - All Rights Reserved</p>
       </footer>
     </>
   )

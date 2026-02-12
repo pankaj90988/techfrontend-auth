@@ -1,193 +1,183 @@
-footer{
+footer {
     /* height: 200px; */
-    background: linear-gradient(to right, #37266f, #1a0700);
+    /* background: linear-gradient(to right, #37266f, #1a0700); */
+    background: #000;
     color: #fff;
-    padding: 2.1rem 2rem;
+    padding: 1rem 2rem;
     border-top-left-radius: 50px;
-    /* border-top-right-radius: 70px; */
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1.2rem;
     /* border: 2px solid red; */
 }
-.row{
+
+.row {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
 }
-.col{
-  flex-basis: 25%;
-  padding: 10px;
+
+.col {
+    flex-basis: 25%;
+    padding: 10px;
+    text-align: justify;
 }
+
 /* .col:nth-child(2), .col:nth-child(3){
     flex-basis: 25%;
 } */
-.col img{
-  margin-bottom: 1.2rem;
-  border-radius: 50%;
+.col img {
+    margin-bottom: 1.2rem;
+    border-radius: 50%;
 }
-.col h3{
+
+.col h3 {
     width: fit-content;
     margin-bottom: 40px;
     position: relative;
     /* text-align: center; */
 }
-.col p{
+
+.col p {
     margin-bottom: 0.6rem;
     line-height: 1.5rem;
 }
-.col .email-id{
+
+.col .email-id {
     width: fit-content;
     border-bottom: 1px solid #ccc;
     margin: 20px 0;
 }
-.col .email-icon{
+
+.col .email-icon {
     font-size: 2.2rem;
     color: burlywood;
     margin-top: 1.5rem;
 }
 
 
-/* .col input{
-    padding: 0.2rem 0.5rem;
-    margin-top: 0rem;
-    font-size: 1.2rem;
-    outline: none;
-    border: none;
-    background: transparent;
-    color: white;
-    border-bottom: 1px solid grey;
-    width: 100%;
-} */
-
-/* .col button{
-    padding: 0.4rem 1.4rem;
-    font-size: 1.2rem;
-    margin-top: 0.6rem;
-    cursor: pointer;
-    border-radius: 20px;
-    background: blueviolet;
-    color: #fff;
-    border: none;
-    outline: none;
-}
-.col button:active{
-    scale: 0.9;
-} */
-
-
-ul li{
+ul li {
     list-style: none;
     margin-bottom: 12px;
 }
-ul li a{
+
+ul li a {
     text-decoration: none;
     color: #fff;
 }
-.social-icons a{
+
+.social-icons a {
     position: relative;
 }
-.social-icons .icon{
+
+.social-icons .icon {
     line-height: 2.2rem;
-    font-size: 2.6rem;
+    font-size: 2rem;
     border-radius: 50%;
     background: #fff;
     margin-right: 0.9rem;
     cursor: pointer;
 }
-.social-icons .github{
+
+.social-icons .github {
     color: black;
 }
-.social-icons .github-a:hover::after{
+
+.social-icons .github-a:hover::after {
     content: "GitHub Profile";
     position: absolute;
     top: 3rem;
     left: 0;
     padding: 0.5rem 0.9rem;
-    background: #f00808;
+    background: #076cef;
     color: white;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 5px;
     z-index: 99;
 
 }
-.social-icons .linkeden{
+
+.social-icons .linkeden {
     color: rgb(0, 110, 255);
 }
-.social-icons .linkeden-a:hover::after{
+
+.social-icons .linkeden-a:hover::after {
     content: "Linkeden Profile";
     position: absolute;
     top: 3rem;
     left: 0;
     padding: 0.5rem 0.9rem;
-    background: #f00808;
+    background: #076cef;
     color: white;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 5px;
     z-index: 99;
 
 }
-.social-icons .instagram{
+
+.social-icons .instagram {
     color: orangered;
 }
-.social-icons .instagram-a:hover::after{
+
+.social-icons .instagram-a:hover::after {
     content: "Insta Profile";
     position: absolute;
     top: 3rem;
     left: 0;
     padding: 0.5rem 0.9rem;
-    background: #f00808;
+    background: #076cef;
     color: white;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 5px;
     z-index: 99;
 
 }
-.social-icons .facebook{
+
+.social-icons .facebook {
     color: rgb(0, 110, 255);
 }
-.social-icons .facebook-a:hover::after{
+
+.social-icons .facebook-a:hover::after {
     content: "Facebook Profile";
     position: absolute;
     top: 3rem;
     left: 0;
     padding: 0.5rem 0.9rem;
-    background: #f00808;
+    background: #076cef;
     color: white;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 5px;
     z-index: 99;
 
 }
-.social-icons .whatsapp{
+
+.social-icons .whatsapp {
     color: rgb(8, 172, 10);
 }
-.social-icons .whatsapp-a:hover::after{
+
+.social-icons .whatsapp-a:hover::after {
     content: "WhatsApp";
     position: absolute;
     top: 3rem;
     left: -2rem;
     padding: 0.5rem 0.9rem;
-    background: #f00808;
+    background: #076cef;
     color: white;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 5px;
     z-index: 99;
 
 }
 
 
-hr{
+hr {
     width: 100%;
     border-bottom: 1px solid #ccc;
     margin: 20px auto;
 }
-.copy-right{
+
+.copy-right {
     text-align: center;
     line-height: 1.7rem;
 }
-.underline{
+
+.underline {
     width: 100%;
     height: 5px;
     background-color: #767676;
@@ -197,32 +187,41 @@ hr{
     left: 0;
     overflow: hidden;
 }
-.underline span{
+
+.underline span {
     width: 40px;
     height: 100%;
     border-radius: 3px;
-    background: linear-gradient(to right, rgb(255, 136, 0), rgb(238, 235, 6));
+    background: linear-gradient(to right, rgb(255, 136, 0), #076cef);
     position: absolute;
     top: 0;
     left: 5px;
     animation: move 2s linear infinite;
 }
+
 @keyframes move {
-    0%{
-        left:-20px;
+    0% {
+        left: -20px;
     }
-    100%{
+
+    100% {
         left: 100%;
     }
 }
 
 @media (max-width:720px) {
-    footer{
+    footer {
         bottom: unset;
-        padding: 2.1rem 1rem;
+        padding: 1rem 1rem;
     }
-    .col{
+    footer .copy-right{
+      font-size: 1.2rem;
+    }
+
+    .col {
         flex-basis: 100%;
-        margin-top: 0.5rem
-      }
+        margin-top: 0.5rem;
+        font-size: 1.2rem;
+    }
+
 }

@@ -71,7 +71,7 @@ const About = () => {
 
   useGSAP(() => {
     gsap.from(".about-left-content h1, .about-left-content p, .about-left-content .btn-box button", {
-      y: 70,
+      y: -50,
       scale: 0.4,
       duration: 0.5,
       delay: 0.2,
@@ -93,7 +93,7 @@ const About = () => {
 
   useGSAP(() => {
     gsap.from(".about-right-content img", {
-      x: 500,
+      x: -400,
       scale: 0.4,
       duration: 0.5,
       delay: 0.2,
@@ -111,13 +111,13 @@ const About = () => {
             <div className="about-left-content">
               <h1>Why Choose Us?</h1>
               <p>
-                <span style={{ fontWeight: 'bolder' }}>1. Expert Help:</span> Our team knows MongoDB, Express, React, and Node.js inside and out.
+                <span style={{ fontWeight: 'bolder' }}>1. Expert Help:</span> Our team knows MongoDB, FastAPI, React, and Python inside and out.
               </p>
               <p>
                 <span style={{ fontWeight: 'bolder' }}>2. Hands-On Practice:</span> We offer workshops where you can work on real projects to build your skills.
               </p>
               <p>
-                <span style={{ fontWeight: 'bold' }}>3. Latest Knowledge:</span> We keep up with the newest updates in the MERN stack, so you learn what's current.
+                <span style={{ fontWeight: 'bold' }}>3. Latest Knowledge:</span> We keep up with the newest updates in the FARM stack, so you learn what's current.
               </p>
               <p>
                 <span style={{ fontWeight: 'bold' }}>4. Team Projects:</span> You can team up with others on projects, gaining experience and building your portfolio.

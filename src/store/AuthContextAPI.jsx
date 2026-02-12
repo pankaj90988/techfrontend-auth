@@ -1,26 +1,56 @@
-import {createContext} from 'react'
+import { jwtDecode } from "jwt-decode";
+import { createContext, useContext, useEffect, useState } from "react";
 
+export const AuthContext = createContext();
 
+export const AuthProvider = ({ children }) => {
 
-// Creating context first Or we can say global storage
-const AuthContext = createContext();
+  const [isLoggedIn, setIsloggedIn] = useState(null);
+  const [role, setRole] = useState(null)
+  const [token, setToken] = useState(localStorage.getItem('token') || null);
+  const [isLoading, setIsLoding] = useState(true);
 
-
-// then create a provider (funtion), by this we pass our data to consumer(children) 
-const AuthProvider = ({children})=>{
-
-      const storeTokenInLocalStorage = (servertoken)=>{
-         return localStorage.setItem("token", servertoken);
+  useEffect(() => {
+    if (token && token != 'undefined') {
+      try {
+        const decoded_payload = jwtDecode(token);
+        setRole(decoded_payload.role);
+      } catch (error) {
+         console.log("Decoding failed:",error);
+         localStorage.removeItem('token');
+         setToken(null)
       }
+     
+    }
+    setIsLoding(false);
+  }, [token]);
 
-      return <AuthContext.Provider value={{storeTokenInLocalStorage}}>
+  // function which login the User
+  const loginUser = (jwt_token) => {
+    localStorage.setItem('token', jwt_token);
+    setToken(jwt_token);
+    return;
+  }
+
+  // function which logout the User
+  const logoutUser = () => {
+    localStorage.removeItem('token');
+    setToken(null);
+    setRole(null);
+    return;
+  }
+
+  // create a bool variable which is updated according token
+  const isLogin = !!token;
+  return (
+    <>
+      <AuthContext.Provider value={{ isLogin, setIsloggedIn, role, setRole, token, setToken, isLoading, logoutUser, loginUser }}>
         {children}
       </AuthContext.Provider>
+    </>
+  )
 }
 
-
-// consumer or deliveryman
-// const useAuth = 
-
-
-export default {AuthContext, AuthProvider}
+export const useAuth = () => {
+  return useContext(AuthContext)
+}

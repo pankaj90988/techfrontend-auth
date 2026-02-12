@@ -2,15 +2,25 @@ import React, { useState } from 'react'
 import Swal from 'sweetalert2'
 import './Contact.css'
 import contactImage from '../assets/registration-3.png'
+import { toast } from 'react-toastify'
+import { PiUserSquareThin } from 'react-icons/pi'
+import { useAuth } from '../store/AuthContextAPI'
 
 const Contact = () => {
-
+  const {logoutUser}=useAuth();
+  const token = localStorage.getItem('token');
   const [contact, setContact] = useState({
     username: "",
     email: "",
     message: "",
   })
 
+
+  /*
+   =========
+   CONTACT INPUT HANDLER 
+   =========
+  */
   const inputHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -19,52 +29,45 @@ const Contact = () => {
       ...contact,
       [name]: value,
     });
-
-    // setContact((previousData) => ({
-    //   ...previousData,
-    //   [name]: value,
-    // }));
   };
 
+  /*
+   =========
+   CONTACT SUBMIT HANDLER FUNCTION
+   =========
+  */
   const formHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://techbackend-h4vp.onrender.com/api/form/contact', {
+      const response = await fetch('https://panku-auth.onrender.com/api/form/contact', {
         method: "POST",
         headers: {
-          'Content-Type': "application/json"
+          'Content-Type': "application/json",
+          'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(contact),
+        body: JSON.stringify(contact)
       });
 
+      const data = await response.json();
       if (response.ok) {
-        setContact({
-          username: "",
-          email: "",
-          message: "",
-        });
-
-        const data = await response.json();
-        Swal.fire({
-          title: "Message sent successfully",
-          icon: "success",
-          draggable: true
-        });
-
+        toast.success(data.msg)
+      } else {
+        logoutUser();
+        toast.error(data.detail);
       }
+
     } catch (error) {
-      Swal.fire({
-        title: "Message not sent successfully",
-        icon: "success",
-        draggable: true
-      });
-      setContact({
-        username: "",
-        email: "",
-        message: "",
-      });
-      console.log(error)
+      logoutUser();
+      toast.info("Server is temporarily unreachable. Please try again later!");
+      console.log("Something went wrong. Try again later!", error)
     }
+
+    setContact({
+      username: "",
+      email: "",
+      message: "",
+    });
+
   };
 
   return (
@@ -104,7 +107,6 @@ const Contact = () => {
                   name='email'
                   id='email'
                   placeholder='Your Email'
-
                   value={contact.email}
                   onChange={inputHandler}
                   required

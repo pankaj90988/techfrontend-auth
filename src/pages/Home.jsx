@@ -14,7 +14,7 @@ const Home = () => {
 
   useGSAP(() => {
     gsap.from(".home-part-one p, .home-part-one h1, .home-part-one span, .home-part-one button, .home-part-one img", {
-      y: 70,
+      y: 20,
       scale: 1.5,
       duration: 0.6,
       delay: 0.2,
@@ -36,7 +36,7 @@ const Home = () => {
 
   useGSAP(() => {
     gsap.from(".home-part-two p, .home-part-two h1, .home-part-two span, .home-part-two button, .home-part-two img", {
-      y: 70,
+      y: 20,
       scale: 1.4,
       duration: 0.5,
       delay: 0.2,
@@ -64,13 +64,13 @@ const Home = () => {
             <p>Lets Connect with our IT Community</p>
             <h1>Welcome to My Community
               <br />
-              <span>Panku Technical</span>
+              <span>Panku IT Services</span>
             </h1>
 
             <p className='about-company'>
-              Panku Tech Company is your go-to partner for innovative solutions. We specialize in MERN stack development, creating dynamic web applications tailored to your needs.
+              Panku Tech Company is your go-to partner for innovative solutions. We specialize in FARM (FastAPI ASGI(Asynchronous Server Gateway Interface) React MongoDB) stack development, creating dynamic web applications tailored to your needs.
 
-              From software development to IT consulting, we cover all areas of technology. Our MERN full-stack developers are proficient in MongoDB, Express.js, React, and Node.js, ensuring seamless integration and functionality. We believe in collaboration, working closely with you to understand your goals.
+              From software development to IT consulting, we cover all areas of technology. Our FARM full-stack developers are proficient in React, FastAPI, Python and MongoDB ensuring seamless integration and functionality. We believe in collaboration, working closely with you to understand your goals.
             </p>
 
             <div className="btn-box">

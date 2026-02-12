@@ -31,7 +31,7 @@
 }
 
 .about-left-content p {
-    font-size: 1.3rem;
+    font-size: 18px;
     letter-spacing: 0.01rem;
     margin-top: 1.9rem;
     text-align: justify;
@@ -45,13 +45,13 @@
 }
 
 .btn-box .first-btn {
-    background: rgb(127, 46, 203);
+    background: #076cef;
     /* padding: 0.9rem 0.9rem; */
 }
 
 .btn-box .second-btn {
     background: transparent;
-    box-shadow: inset 0 0 0 0.2rem rgb(114, 44, 179);
+    box-shadow: inset 0 0 0 0.2rem #076cef;
     /* padding: 0.9rem 0.9rem; */
 }
 
@@ -98,7 +98,7 @@
 }
 
 .swiper-card p {
-    font-size: 1.3rem;
+    font-size: 18px;
     /* margin-top: 0.5rem; */
 }
 
@@ -126,11 +126,13 @@
 
 
 .swiper-pagination-bullet {
-    background: red; /* Default dot color */
+    background: red;
+    /* Default dot color */
 }
 
 .swiper-pagination-bullet-active {
-    background: blue; /* Active dot color */
+    background: blue;
+    /* Active dot color */
 }
 
 
@@ -145,7 +147,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(127, 46, 203);
+    background: #076cef;
     white-space: none;
     overflow-x: hidden;
 }
@@ -185,6 +187,7 @@
     from {
         transform: translateX(100%);
     }
+
     to {
         transform: translateX(-110%);
     }
@@ -209,6 +212,13 @@
         padding: 0 1rem;
         padding-bottom: 1rem;
         /* border: 2px solid red; */
+    }
+
+    .about-left-content p {
+        font-size: 18px;
+        letter-spacing: 0.01rem;
+        margin-top: 1rem;
+        text-align: justify;
     }
 
     .about-right-content img {

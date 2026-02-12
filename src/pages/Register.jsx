@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 import Swal from 'sweetalert2'
-import {Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Register.css'
 import RegiImage from '../assets/registration-3.png'
+import { toast } from 'react-toastify'
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
+
+  const [isEyeopen, setisEyeopen] = useState(false);
 
   const navigate = useNavigate();
   const [user, setUser] = useState({
@@ -14,19 +19,33 @@ const Register = () => {
     phone: ""
   });
 
+  /*=========
+ REGISTER INPUT HANDLER
+ =========*/
   const inputHandler = (e) => {
     let name = e.target.name;
     let value = e.target.value;
+
+    if (name === 'phone') {
+      value = value.replace(/[^0-9]/g, '');
+    }
+
     setUser({
       ...user,
       [name]: value,
     });
   }
 
+
+  /*
+   =========
+   REGISTER SUBMIT HANDLER HANDLER
+   =========
+  */
   const formHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://techbackend-h4vp.onrender.com/api/auth/register', {
+      const response = await fetch('https://panku-auth.onrender.com/api/auth/register', {
         method: "POST",
         headers: {
           'Content-Type': "application/json",
@@ -34,38 +53,32 @@ const Register = () => {
         body: JSON.stringify(user),
       });
 
+      const data = await response.json()
       if (response.ok) {
-        Swal.fire({
-          title: "Registration succesfull\nThank you",
-          icon: "success",
-          draggable: true
-        });
-        // const res_data = await response.json();
-        //storing data in localstorage
-        // sotreTokenInLocalStorage(res_data.token);
-        // localStorage.setItem("token", res_data.token);
-
+        toast.success(data.msg)
         setUser({
           username: "",
           email: "",
           password: "",
           phone: ""
         });
-        navigate("/login");
-      }else{
-        Swal.fire({
-          title: "Something went wrong try again",
-          icon: "success",
-          draggable: true
-        });
-        
+        navigate(`/verify-otp/${user.email}`)
+      } else {
+
+        if (data.detail[0].msg) {
+          toast.info(data.detail[0].msg)
+        } else {
+          // verify by backend that this credentail have account or not || user have account but enter wrong credetial
+          console.log("From credentail", data.detail)
+          toast.error(data.detail);
+        }
+
       }
     } catch (error) {
       console.log("In Register:", error);
     }
 
   };
-
 
   return (
     <>
@@ -85,7 +98,7 @@ const Register = () => {
             <div className="right-box registration-form">
               <h1 className="main-heading">Register Yourself</h1>
               <br />
-              <form onSubmit={formHandler}>
+              <form onSubmit={(e) => formHandler(e)}>
                 <div className='register-label-input-cont'>
                   <label htmlFor="username">Username</label>
                   <input type="text"
@@ -112,19 +125,22 @@ const Register = () => {
                 </div>
                 <div className='register-label-input-cont'>
                   <label htmlFor="phone">Phone</label>
-                  <input type="number"
+                  <input type="text"
                     name='phone'
                     placeholder='Phone Number'
                     id='phone'
                     autoComplete='off'
                     value={user.phone}
                     onChange={inputHandler}
+                    maxLength="10"
+                    title='Please enter exact 10 digit'
                     required
                   />
+
                 </div>
                 <div className='register-label-input-cont'>
                   <label htmlFor="password">Password</label>
-                  <input type="password"
+                  <input type={`${isEyeopen ? 'text' : 'password'}`}
                     name='password'
                     placeholder='Password'
                     id='password'
@@ -133,6 +149,10 @@ const Register = () => {
                     onChange={inputHandler}
                     required
                   />
+                  {!isEyeopen ?
+                    (<FaRegEyeSlash className='eye-icon' onClick={() => setisEyeopen(!isEyeopen)} />) :
+                    (<FaRegEye className='eye-icon' onClick={() => setisEyeopen(!isEyeopen)} />)
+                  }
                 </div>
 
                 <br />
@@ -140,11 +160,11 @@ const Register = () => {
                   className='submit-btn'
                 >Register Now</button>
               </form>
-               
-               <p className='already'>Already registred ?</p>
-               <Link className="login-route" to='/login'>
+
+              <p className='already'>Already registred ?</p>
+              <Link className="login-route" to='/login'>
                 login
-               </Link>
+              </Link>
             </div>
           </div>
         </main>
