@@ -24,34 +24,6 @@ ul li {
     color: #3b82f6;
 }
 
-.container .profile {
-    position: relative;
-    /* border: 1px solid white; */
-}
-
-.container .profile label {
-    position: absolute;
-    bottom: 0rem;
-    right: 0rem;
-    cursor: pointer;
-}
-
-.container .profile .profile-icon {
-    font-size: 2.8rem;
-}
-
-.container .profile img {
-    width: 3.5rem;
-    height: 3.5rem;
-    object-fit: cover;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid white;
-}
-
-.container .profile-input {
-    display: none;
-}
 
 .nav {
     display: flex;

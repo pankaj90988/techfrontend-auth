@@ -34,7 +34,6 @@ const Service = () => {
 
       } else {
         logoutUser();
-
         toast.error(data.detail)
       }
     } catch (error) {

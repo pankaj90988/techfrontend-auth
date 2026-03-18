@@ -66,20 +66,6 @@ const Navbar = () => {
                         <Link to="/"><img src={Logo} alt="Brand Logo" /></Link>
                     </div>
 
-                    {
-                        isLogin && <div className="profile">
-                            {
-                                preview ? (<img src={preview} alt="profile-picture" />) : (<PiUserCircleThin className='profile-icon' />)
-                            }
-                            <label htmlFor="profile-picker">
-                                <FaCamera />
-                            </label>
-                            <input id='profile-picker' className='profile-input' type="file"
-                                onChange={(e)=>hanglePicker(e)}
-                            />
-                        </div>
-                    }
-
                     <nav>
                         <div className={menu ? ("main-menu-cont-open") : ("main-menu-cont")}>
                             <ul className={!menu ? "nav navWidth" : "nav"}>

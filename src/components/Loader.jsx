@@ -15,8 +15,8 @@ const Loader = () => {
                 width: '50px',
                 height: '50px',
                 border: '6px solid #f0e8e8',
-                borderTop: '6px solid #1490e3',
-                borderRadius: '30%',
+                borderTop: '6px solid #14e348',
+                borderRadius: '50%',
                 animation: 'spin 1s linear infinite'
             }}></div>
             <style>
@@ -27,7 +27,6 @@ const Loader = () => {
             }
             50%{
                border-radius: 50%;
-               scale:0.8;
                border-top: 6px solid #14e348;
               }
             100% { 

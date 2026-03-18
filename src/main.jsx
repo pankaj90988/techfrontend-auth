@@ -4,7 +4,6 @@ import App from './App.jsx'
 import './index.css'
 import { ToastContainer } from 'react-toastify'
 import { AuthProvider } from './store/AuthContextAPI.jsx'
-// import AuthProvider from './store/AuthContextAPI.jsx'
 
 createRoot(document.getElementById('root')).render(
 

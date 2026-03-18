@@ -3,7 +3,6 @@ import './AdminPanel.css'
 import { PiUserCircleThin } from "react-icons/pi";
 import { toast } from 'react-toastify';
 import Loader from './Loader';
-import { use } from 'react';
 
 const AdminPanel = () => {
 
@@ -27,7 +26,7 @@ const AdminPanel = () => {
                 setMessages(updatedMessage);
                 toast.success(data.msg);
             } else {
-                toast.error(data.detail)
+                toast.error(data.detail);
             }
         } catch (error) {
             console.log("Something went wrong in Contact delete:", error)
@@ -133,9 +132,6 @@ GET ALL AWAITED USERS FOR EMAIL VERIFICATION FUNCTION HANDLER
     }, []);
 
 
-
-
-
     return (
         <>
             <div className='admin-container'>
@@ -160,8 +156,8 @@ GET ALL AWAITED USERS FOR EMAIL VERIFICATION FUNCTION HANDLER
                             display: 'grid',
                             gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
                             gap: '15px',
-                            height:'900px',
-                            overflowY:'auto',
+                            height: '900px',
+                            overflowY: 'auto',
                             fontFamily: 'system-ui, -apple-system, sans-serif'
                         }}>
                             {

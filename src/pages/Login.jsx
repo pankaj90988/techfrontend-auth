@@ -52,10 +52,10 @@ const Login = () => {
         body: JSON.stringify(data)
       });
       const message = await response.json();
-
+      
       if (response.ok) {
         toast.success(message.msg)
-        const jwt_token = message.token
+        const jwt_token = message.token;
         if (localStorage.getItem('token')) {
           localStorage.removeItem('token')
         }
