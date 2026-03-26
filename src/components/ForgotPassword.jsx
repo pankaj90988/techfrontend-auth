@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BASE_URL } from '../api/apiConfig';
 import { useNavigate } from 'react-router-dom';
 import './ForgotPassword.css'
 import { toast } from 'react-toastify';
@@ -51,12 +52,12 @@ const ForgotPassword = () => {
   const generateOTP = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://panku-auth.onrender.com/api/auth/forgot-password/generate-code', {
+      const response = await fetch(`${BASE_URL}/api/auth/forgot-password/generate-code`, {
         method: 'POST',
         headers: { 'Content-Type': "application/json" },
         body: JSON.stringify({ "email": email })
       });
-      const message = await response.json()
+      const message = await response.json();
       if (response.ok) {
         setisotpSent(true)
         toast.success(message.msg)
@@ -77,7 +78,7 @@ const ForgotPassword = () => {
   const onsubmitResetPasswordHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://panku-auth.onrender.com/api/auth/reset-password', {
+      const response = await fetch(`${BASE_URL}/api/auth/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': "application/json" },
         body: JSON.stringify({ "email": email, "password": user.password, "otp": user.otp })
@@ -87,6 +88,7 @@ const ForgotPassword = () => {
         toast.success(message.msg);
         navigate("/login");
       } else {
+        console.log("gfg:",message.detail[0]?.msg)
         toast.error(message.detail[0]?.msg || "Invalid Reset Attempt");
       }
     } catch (error) {

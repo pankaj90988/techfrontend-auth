@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { IoSearchOutline } from "react-icons/io5";
 import { RiMenu3Line } from "react-icons/ri";
 import { RiCloseLargeFill } from "react-icons/ri";
-import { PiUserCircleThin } from "react-icons/pi";
-import { FaCamera } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -15,23 +12,9 @@ import { useAuth } from '../store/AuthContextAPI';
 const Navbar = () => {
 
     const { role } = useAuth();
-    const [preview, setPreview] = useState("");
     const { isLogin, logoutUser } = useAuth();
     const [menu, setMenu] = useState(false);
-    const [navWidth, setNavWidth] = useState(false);
     const navigate = useNavigate();
-
-    const hanglePicker = (e) => {
-
-        const file = e.target.files[0];
-        URL.revokeObjectURL(preview)
-        if (file) {
-            const imgUrl = URL.createObjectURL(file)
-            setPreview(imgUrl)
-        }
-        return
-    }
-
     const handleLogout = () => {
         logoutUser()
         setMenu(!menu)

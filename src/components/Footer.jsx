@@ -60,9 +60,6 @@ const Footer = () => {
                 <FaWhatsapp className='icon whatsapp' />
               </a>
             </div>
-            <MdEmail className='email-icon' />
-            {/* <input type="text" placeholder='Send Your Feedback Here..' />
-            <button type='submit'>Send</button> */}
           </div>
         </div>
         <hr />

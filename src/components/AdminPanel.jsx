@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { BASE_URL } from '../api/apiConfig';
 import './AdminPanel.css'
 import { PiUserCircleThin } from "react-icons/pi";
 import { toast } from 'react-toastify';
 import Loader from './Loader';
+
 
 const AdminPanel = () => {
 
@@ -17,7 +19,7 @@ const AdminPanel = () => {
  */
     const deleteMessageHandler = async (_id) => {
         try {
-            const response = await fetch(`https://panku-auth.onrender.com/api/admin-dashboard/delete-contact/${_id}`, {
+            const response = await fetch(`${BASE_URL}/api/admin-dashboard/delete-contact/${_id}`, {
                 method: 'DELETE'
             });
             const data = await response.json();
@@ -60,7 +62,7 @@ GET ALL MESSAGE HANDLER FUNCTION
 */
     const getMessages = async () => {
         try {
-            const response = await fetch('https://panku-auth.onrender.com/api/admin-dashboard/get-messages', {
+            const response = await fetch(`${BASE_URL}/api/admin-dashboard/get-messages`, {
                 method: 'GET',
             });
 
@@ -85,7 +87,7 @@ GET ALL VERIFIED USERS FUNCTION HANDLER
 */
     const getUser = async () => {
         try {
-            const response = await fetch("https://panku-auth.onrender.com/api/admin-dashboard/get-user-details", {
+            const response = await fetch(`${BASE_URL}/api/admin-dashboard/get-user-details`, {
                 method: "GET",
             });
 
@@ -109,7 +111,7 @@ GET ALL AWAITED USERS FOR EMAIL VERIFICATION FUNCTION HANDLER
 */
     const getAwaitingEmailVerification = async () => {
         try {
-            const response = await fetch('https://panku-auth.onrender.com/api/admin-dashboard/awaiting-email-verification', {
+            const response = await fetch(`${BASE_URL}/api/admin-dashboard/awaiting-email-verification`, {
                 method: 'GET'
             });
 

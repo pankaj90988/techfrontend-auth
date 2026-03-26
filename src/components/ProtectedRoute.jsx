@@ -1,6 +1,7 @@
+import React,{ useEffect, useState } from "react"
 import { jwtDecode } from "jwt-decode"
-import { useEffect, useState } from "react"
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { BASE_URL } from "../api/apiConfig"
+import { Link, Navigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { useAuth } from "../store/AuthContextAPI"
 import Loader from "./Loader"
@@ -24,7 +25,7 @@ const ProtectedRoute = ({ children }) => {
         }
       
         try {
-            const response = await fetch('https://panku-auth.onrender.com/api/verify-session', {
+            const response = await fetch(`${BASE_URL}/api/verify-session`, {
                 method: 'GET',
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -134,7 +135,6 @@ const ProtectedRoute = ({ children }) => {
         }
 
         if (isnotgettoken) {
-            // toast.warn("We are sorry! Please login first to access this page")
             return <Navigate to="/login" replace />
         }
 

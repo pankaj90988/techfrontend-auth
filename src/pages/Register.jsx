@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Swal from 'sweetalert2'
 import { Link, useNavigate } from 'react-router-dom'
 import './Register.css'
 import RegiImage from '../assets/registration-3.png'
 import { toast } from 'react-toastify'
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
+import { BASE_URL } from '../api/apiConfig'
 
 const Register = () => {
 
@@ -45,7 +45,7 @@ const Register = () => {
   const formHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://panku-auth.onrender.com/api/auth/register', {
+      const response = await fetch(`${BASE_URL}/api/auth/register`, {
         method: "POST",
         headers: {
           'Content-Type': "application/json",
@@ -53,28 +53,29 @@ const Register = () => {
         body: JSON.stringify(user),
       });
 
-      const data = await response.json()
+      const data = await response.json();
       if (response.ok) {
-        toast.success(data.msg)
+        toast.success(data.msg);
         setUser({
           username: "",
           email: "",
           password: "",
           phone: ""
         });
-        navigate(`/verify-otp/${user.email}`)
+        navigate(`/verify-otp/${user.email}`);
       } else {
 
         if (data.detail[0].msg) {
-          toast.info(data.detail[0].msg)
+          toast.info(data.detail[0].msg);
         } else {
           // verify by backend that this credentail have account or not || user have account but enter wrong credetial
-          console.log("From credentail", data.detail)
+          console.log("From credentail", data.detail);
           toast.error(data.detail);
         }
 
       }
     } catch (error) {
+      toast.error("Something went wrong. PLease check your internet connection!");
       console.log("In Register:", error);
     }
 

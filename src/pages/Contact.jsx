@@ -3,8 +3,8 @@ import Swal from 'sweetalert2'
 import './Contact.css'
 import contactImage from '../assets/registration-3.png'
 import { toast } from 'react-toastify'
-import { PiUserSquareThin } from 'react-icons/pi'
 import { useAuth } from '../store/AuthContextAPI'
+import { BASE_URL } from '../api/apiConfig'
 
 const Contact = () => {
   const {logoutUser}=useAuth();
@@ -39,7 +39,7 @@ const Contact = () => {
   const formHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://panku-auth.onrender.com/api/form/contact', {
+      const response = await fetch(`${BASE_URL}/api/form/contact`, {
         method: "POST",
         headers: {
           'Content-Type': "application/json",
@@ -49,9 +49,12 @@ const Contact = () => {
       });
 
       const data = await response.json();
+      console.log("repos:",response.status)
+      console.log("data:",data)
       if (response.ok) {
         toast.success(data.msg)
       } else {
+        
         logoutUser();
         toast.error(data.detail);
       }

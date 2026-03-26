@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 const Timer = ({initialTime,setinitialTime}) => {
 
-    const [timeleft, setTimeLeft] = useState(initialTime); // 5 minutes
+    const [timeleft, setTimeLeft] = useState(initialTime);
     useEffect(() => {
         if (timeleft <= 0) {
             setinitialTime(timeleft)

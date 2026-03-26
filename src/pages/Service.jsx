@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './Service.css'
-import ServiceImage from '../assets/registration-3.png'
 import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
-import { GiToken } from 'react-icons/gi';
 import { useAuth } from '../store/AuthContextAPI';
+import { BASE_URL } from '../api/apiConfig';
 
 const Service = () => {
 
@@ -19,7 +18,7 @@ const Service = () => {
   */
   const getServices = async () => {
     try {
-      const response = await fetch('https://panku-auth.onrender.com/api/data/service', {
+      const response = await fetch(`${BASE_URL}/api/data/service`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`

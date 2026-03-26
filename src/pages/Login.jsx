@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Swal from 'sweetalert2'
 import { Link, useNavigate } from 'react-router-dom'
 import loginImage from '../assets/login-1.png'
 import './Login.css'
@@ -7,6 +6,7 @@ import { toast } from 'react-toastify'
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { useAuth } from '../store/AuthContextAPI'
+import { BASE_URL } from '../api/apiConfig'
 
 const Login = () => {
   const { loginUser } = useAuth();
@@ -44,7 +44,7 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://panku-auth.onrender.com/api/auth/login', {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           'Content-Type': "application/json",
@@ -84,7 +84,7 @@ const Login = () => {
 
       }
     } catch (error) {
-      toast.error("Something went wrong \nCheck your internet connection")
+      toast.error("Something went wrong.Please check your internet connection!")
       console.log("In login:", error);
     }
   }
