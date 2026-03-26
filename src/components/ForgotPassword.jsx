@@ -58,6 +58,8 @@ const ForgotPassword = () => {
         body: JSON.stringify({ "email": email })
       });
       const message = await response.json();
+      console.log("Reset code:",response)
+      console.log("Reset dat:",message)
       if (response.ok) {
         setisotpSent(true)
         toast.success(message.msg)
